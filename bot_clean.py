@@ -35,7 +35,9 @@ flip.tails = 0
 
 #help system
 help_messages = """
+```
 Welcome to help menu for this bot!
+
 The following functions are available:
 /help or help: This menu
 /hello: Well... the bot says hello!
@@ -43,6 +45,7 @@ The following functions are available:
 /addrole: Adds a user to a specified role. An example of this: /addrole Username Rolename
 /coin: Flip a coin!
 /cc: Coin Counter! Displays Heads/Tails occurences. 
+```
 """
 
 #messaging system
@@ -64,8 +67,8 @@ async def on_message(message):
         await message.channel.send(flip())
 
     if message.content.startswith('/cc'):
-        await message.channel.send("Heads: " + flip.heads)
-        await message.channel.send("Tails: " + flip.tails)
+        await message.channel.send("Heads: " + str(flip.heads))
+        await message.channel.send("Tails: " + str(flip.tails))
 
     if message.content.startswith('/roll'):
         await message.channel.send('Rolling the dice...')
@@ -100,6 +103,5 @@ async def on_message(message):
                 await message.channel.send("Successfully added role {0}".format(role.name))
             except discord.Forbidden:
                 await message.channel.send("Invalid permissions")
-                    
+
 #client.run(TOKEN_HERE)
-    
