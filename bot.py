@@ -41,7 +41,8 @@ The following functions are available:
 /hello: Well... the bot says hello!
 /roll: Rolls dice for a random int between 1-100.
 /addrole: Adds a user to a specified role. An example of this: /addrole Username Rolename
-/flip: Flip a coin!
+/coin: Flip a coin!
+/cc: Coin Counter! Displays Heads/Tails occurences. 
 """
 
 #messaging system
@@ -59,14 +60,12 @@ async def on_message(message):
     if message.content.startswith('/help'):
         await message.channel.send(help_messages)
 
-    if message.content.startswith('/asdf'):
+    if message.content.startswith('/coin'):
         await message.channel.send(flip())
 
-    if message.content.startswith('/counterh'):
-        await message.channel.send(flip.heads)
-
-    if message.content.startswith('/countert'):
-        await message.channel.send(flip.tails)
+    if message.content.startswith('/cc'):
+        await message.channel.send("Heads: " + flip.heads)
+        await message.channel.send("Tails: " + flip.tails)
 
     if message.content.startswith('/roll'):
         await message.channel.send('Rolling the dice...')
